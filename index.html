@@ -64,26 +64,18 @@
     <article id="post-跨域请求" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/24/跨域请求/" class="article-date">
-  <time datetime="2017-03-24T02:23:29.000Z" itemprop="datePublished">2017-03-24</time>
+  <time datetime="2017-03-24T02:23:29.985Z" itemprop="datePublished">2017-03-24</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/24/跨域请求/">跨域请求</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="跨域请求的深入浅出"><a href="#跨域请求的深入浅出" class="headerlink" title="跨域请求的深入浅出"></a>跨域请求的深入浅出</h1><p><strong>一、 跨域请求的含义</strong></p>
+        <hr>
+<p>title: 前端跨域请求原理及实践<br>date: 2015-03-24 10:23:29</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p><strong>一、 跨域请求的含义</strong></p>
 <p>浏览器的同源策略，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。</p>
 <p>一般的，只要网站的 协议名protocol、 主机host、 端口号port 这三个中的任意一个不同，网站间的数据请求与传输便构成了跨域调用。这也是我们下面实践的理论基础。我们利用 NodeJs 创建了两个服务器，分别监听 3000、 3001 端口（下面简称 服务器3000 与 服务器3001 ），由于端口号不一样，这两个服务器以及服务器上页面通信构成了跨域请求。</p>
 <p>在服务器3000 上有如下的页面：</p>
@@ -140,6 +132,11 @@
 <p><strong>二、 利用 JSONP 实现跨域调用</strong></p>
 <p>说道跨域调用，可能大家首先想到的或者听说过的就是 JSONP 了。</p>
 <p>2.1 什么是JSONP</p>
+<blockquote>
+<p>JSONP (JSON with Padding or JSON-P) is a JSON extension used by web developers to overcome the cross-domain restrictions imposed by browsers’ same-origin policy that limits access to resources retrieved from origins other than the one the page was served by. In layman’s terms, one website cannot just simply access the data from another website.</p>
+<p>It was developed because handling a browsers’ same origin policy can be difficult, so using JSONP abstracts the difficulties and makes it easier.</p>
+<p>JSON stands for “JavaScript Object Notation”, a format by which object fields are represented as key-value pairs which is used to represent data.</p>
+</blockquote>
 <p>JSONP 是 JSON 的一种使用模式，可以解决主流浏览器的跨域数据访问问题。其原理是根据 XmlHttpRequest 对象受到同源策略的影响，而 </p>
 <p>这样从服务器返回的代码就可以直接在这个 script 标签中运行了。下面我们自己实现一个 JSONP：</p>
 <p>服务器 3000请求页面的 JavaScript 代码中，只有回调函数 jsonpCallback：</p>
@@ -309,7 +306,7 @@
       <ul>
         
           <li>
-            <a href="/2017/03/24/跨域请求/">跨域请求</a>
+            <a href="/2017/03/24/跨域请求/">(no title)</a>
           </li>
         
           <li>
