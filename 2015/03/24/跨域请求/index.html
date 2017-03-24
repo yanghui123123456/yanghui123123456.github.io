@@ -3,32 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>跨域请求 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: 前端跨域请求原理及实践date: 2015-03-24 10:23:29
-tags:一、 跨域请求的含义
+  <meta name="description" content="前端跨域请求原理及实践一、 跨域请求的含义
 浏览器的同源策略，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。
-一般的，只要网站的 协议名protocol、 主机host、 端口号port 这三个中的任意一个不同，网站间的数据请求与传输便构成了跨域调用。这也是我们下面实践的理">
+一般的，只要网站的 协议名protocol、 主机host、 端口号port 这三个中的任意一个不同，网站间的数据请求与传输便构成了跨域调用。这也是我们下面实践的理论基础。我们利用 NodeJs 创建了两个服务器，分别监听 3000、 300">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2017/03/24/跨域请求/index.html">
+<meta property="og:title" content="跨域请求">
+<meta property="og:url" content="http://yoursite.com/2015/03/24/跨域请求/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="title: 前端跨域请求原理及实践date: 2015-03-24 10:23:29
-tags:一、 跨域请求的含义
+<meta property="og:description" content="前端跨域请求原理及实践一、 跨域请求的含义
 浏览器的同源策略，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。
-一般的，只要网站的 协议名protocol、 主机host、 端口号port 这三个中的任意一个不同，网站间的数据请求与传输便构成了跨域调用。这也是我们下面实践的理">
+一般的，只要网站的 协议名protocol、 主机host、 端口号port 这三个中的任意一个不同，网站间的数据请求与传输便构成了跨域调用。这也是我们下面实践的理论基础。我们利用 NodeJs 创建了两个服务器，分别监听 3000、 300">
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib14u1p5qwMSKMsNvfQUeU0ckRujt0pLM9qyuicoeJ5DM8V1icsWKzGiaOria2hkzLg6dLe81ODPWJW9sQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib14u1p5qwMSKMsNvfQUeU0coGHLbicLy9uWnL1MbMUiaicTMUVZ7fJnbE6me8ZBCMmKoplEg4t8ibm9jQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib14u1p5qwMSKMsNvfQUeU0c3G6fv4PRbpV6T5TlDQ45iaiaM5EicDicNwm86atEIXsAVtaxz8T8nlE3WQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib14u1p5qwMSKMsNvfQUeU0cBlA3pC1azdbX6STic1B9VmwuP4wdCjReXzyx6UgB2TAiboqg5vIqEaPA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
 <meta property="og:image" content="http://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib14u1p5qwMSKMsNvfQUeU0cwZmFB4zHp1G2HEW3WLb532szlSVwma9doru5iayt4VVSk1fqfdmaM1g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
-<meta property="og:updated_time" content="2017-03-24T02:34:11.172Z">
+<meta property="og:updated_time" content="2017-03-24T02:36:43.184Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="title: 前端跨域请求原理及实践date: 2015-03-24 10:23:29
-tags:一、 跨域请求的含义
+<meta name="twitter:title" content="跨域请求">
+<meta name="twitter:description" content="前端跨域请求原理及实践一、 跨域请求的含义
 浏览器的同源策略，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。
-一般的，只要网站的 协议名protocol、 主机host、 端口号port 这三个中的任意一个不同，网站间的数据请求与传输便构成了跨域调用。这也是我们下面实践的理">
+一般的，只要网站的 协议名protocol、 主机host、 端口号port 这三个中的任意一个不同，网站间的数据请求与传输便构成了跨域调用。这也是我们下面实践的理论基础。我们利用 NodeJs 创建了两个服务器，分别监听 3000、 300">
 <meta name="twitter:image" content="http://mmbiz.qpic.cn/mmbiz_png/zPh0erYjkib14u1p5qwMSKMsNvfQUeU0ckRujt0pLM9qyuicoeJ5DM8V1icsWKzGiaOria2hkzLg6dLe81ODPWJW9sQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -67,9 +64,9 @@ tags:一、 跨域请求的含义
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -80,19 +77,27 @@ tags:一、 跨域请求的含义
       <div class="outer">
         <section id="main"><article id="post-跨域请求" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/03/24/跨域请求/" class="article-date">
-  <time datetime="2017-03-24T02:23:29.985Z" itemprop="datePublished">2017-03-24</time>
+    <a href="/2015/03/24/跨域请求/" class="article-date">
+  <time datetime="2015-03-24T02:23:29.000Z" itemprop="datePublished">2015-03-24</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      跨域请求
+    </h1>
+  
+
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: 前端跨域请求原理及实践<br>date: 2015-03-24 10:23:29</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><p><strong>一、 跨域请求的含义</strong></p>
+        <h1 id="前端跨域请求原理及实践"><a href="#前端跨域请求原理及实践" class="headerlink" title="前端跨域请求原理及实践"></a>前端跨域请求原理及实践</h1><p><strong>一、 跨域请求的含义</strong></p>
 <p>浏览器的同源策略，出于防范跨站脚本的攻击，禁止客户端脚本（如 JavaScript）对不同域的服务进行跨站调用。</p>
 <p>一般的，只要网站的 协议名protocol、 主机host、 端口号port 这三个中的任意一个不同，网站间的数据请求与传输便构成了跨域调用。这也是我们下面实践的理论基础。我们利用 NodeJs 创建了两个服务器，分别监听 3000、 3001 端口（下面简称 服务器3000 与 服务器3001 ），由于端口号不一样，这两个服务器以及服务器上页面通信构成了跨域请求。</p>
 <p>在服务器3000 上有如下的页面：</p>
@@ -238,7 +243,7 @@ tags:一、 跨域请求的含义
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/24/跨域请求/" data-id="cj0n7eccs0000y8aygm3oo6hh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/24/跨域请求/" data-id="cj0n7eccs0000y8aygm3oo6hh" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -247,11 +252,15 @@ tags:一、 跨域请求的含义
     
 <nav id="article-nav">
   
-  
-    <a href="/2017/03/24/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/03/24/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -274,7 +283,7 @@ tags:一、 跨域请求的含义
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
     </div>
   </div>
 
@@ -282,16 +291,16 @@ tags:一、 跨域请求的含义
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/03/24/跨域请求/">(no title)</a>
+            <a href="/2017/03/24/hello-world/">Hello World</a>
           </li>
         
           <li>
-            <a href="/2017/03/24/hello-world/">Hello World</a>
+            <a href="/2015/03/24/跨域请求/">跨域请求</a>
           </li>
         
       </ul>
@@ -307,7 +316,7 @@ tags:一、 跨域请求的含义
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
